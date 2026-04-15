@@ -1,0 +1,55 @@
+/* ========================================
+   GOTA DE AMOR - Página Doações
+   Estilos específicos: PIX, Transparência
+   ======================================== */
+
+/* ========================================
+   PIX CONTAINER
+   ======================================== */
+
+.pix-container {
+  background-color: var(--gota-blue-100);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  text-align: center;
+}
+
+.pix-qr {
+  width: 200px;
+  height: 200px;
+  background-color: var(--white);
+  margin: 0 auto var(--spacing-lg);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pix-key {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  background-color: var(--white);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-md);
+}
+
+.pix-key code {
+  flex: 1;
+  font-family: monospace;
+  font-size: 0.875rem;
+  word-break: break-all;
+}
+
+.copy-feedback {
+  color: #28A745;
+  font-size: 0.875rem;
+  margin-top: var(--spacing-sm);
+  display: none;
+}
+
+.copy-feedback.show {
+  display: block;
+}

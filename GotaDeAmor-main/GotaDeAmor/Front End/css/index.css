@@ -1,0 +1,145 @@
+/* ========================================
+   GOTA DE AMOR - Página Inicial (Index)
+   Estilos específicos: Hero, About Preview, Projects
+   ======================================== */
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+.hero {
+  background-color: var(--hero-bg);
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-3xl) 0;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-xl);
+}
+
+@media (min-width: 1024px) {
+  .hero-content {
+    flex-direction: row;
+    text-align: left;
+    gap: var(--spacing-3xl);
+  }
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--gota-blue-200);
+  color: var(--gota-blue-900);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero h1 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero h1 span {
+  color: var(--gota-pink-700);
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  margin-bottom: var(--spacing-xl);
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 640px) {
+  .hero-buttons {
+    flex-direction: row;
+  }
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ========================================
+   ABOUT PREVIEW SECTION
+   ======================================== */
+
+.about-preview {
+  background-color: var(--white);
+}
+
+.about-preview-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+}
+
+@media (min-width: 1024px) {
+  .about-preview-content {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.about-preview-text {
+  flex: 1;
+}
+
+.about-preview-text h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.about-preview-text h2 span {
+  color: var(--gota-blue-500);
+}
+
+.about-preview-stats {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+/* ========================================
+   PROJECTS SECTION
+   ======================================== */
+
+.projects {
+  background-color: var(--gota-blue-100);
+}
+
+.project-card {
+  background-color: var(--white);
+}

@@ -1,0 +1,58 @@
+/* ========================================
+   GOTA DE AMOR - Página Contato
+   Estilos específicos: Formulários
+   ======================================== */
+
+/* ========================================
+   FORMULÁRIOS
+   ======================================== */
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--gota-blue-200);
+  border-radius: var(--radius-lg);
+  background-color: var(--white);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--gota-blue-500);
+  box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.2);
+}
+
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-error {
+  color: var(--gota-red);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+}
+
+.form-success {
+  background-color: #D4EDDA;
+  color: #155724;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+}

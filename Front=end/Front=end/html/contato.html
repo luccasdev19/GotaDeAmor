@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre em contato com a Gota de Amor. Estamos prontos para atender você e esclarecer suas dúvidas.">
+  <title>Contato | Gota de Amor</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/contato.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">Gota de Amor</a>
+      
+      <nav class="nav-desktop">
+        <a href="sobre.html" class="nav-link">Sobre</a>
+        <a href="acolhimento.html" class="nav-link">Acolhimento</a>
+        <a href="blog.html" class="nav-link">Postagens/Blog</a>
+        <a href="contato.html" class="nav-link active">Contato</a>
+      </nav>
+      
+      <div class="header-actions">
+        <a href="doacoes.html" class="btn btn-donate">Doar</a>
+      </div>
+      
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    
+    <nav class="nav-mobile">
+      <ul class="nav-mobile-list">
+        <li><a href="index.html" class="nav-mobile-link">Início</a></li>
+        <li><a href="sobre.html" class="nav-mobile-link">Sobre</a></li>
+        <li><a href="acolhimento.html" class="nav-mobile-link">Acolhimento</a></li>
+        <li><a href="blog.html" class="nav-mobile-link">Postagens/Blog</a></li>
+        <li><a href="contato.html" class="nav-mobile-link active">Contato</a></li>
+      </ul>
+      <div class="nav-mobile-cta">
+        <a href="doacoes.html" class="btn btn-donate" style="width: 100%;">Doar</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Contato</h1>
+      <p>Estamos prontos para atender você. Entre em contato conosco!</p>
+      <div class="breadcrumb">
+        <a href="index.html">Início</a>
+        <span>/</span>
+        <span>Contato</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="about-preview-content" style="gap: var(--spacing-3xl);">
+        <!-- Contact Form -->
+        <div style="flex: 1.5;">
+          <h2 class="mb-lg">Envie sua <span class="text-blue">Mensagem</span></h2>
+          
+          <div id="form-success" class="form-success" style="display: none;"></div>
+          <div id="form-error" class="form-success" style="display: none; background-color: #F8D7DA; color: #721C24;"></div>
+          
+          <form id="contact-form">
+            <div class="grid grid-2">
+              <div class="form-group">
+                <label for="nome" class="form-label">Nome completo *</label>
+                <input 
+                  type="text" 
+                  id="nome" 
+                  name="nome" 
+                  class="form-input" 
+                  placeholder="Seu nome completo"
+                  required
+                >
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">E-mail *</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  class="form-input" 
+                  placeholder="seu@email.com"
+                  required
+                >
+              </div>
+            </div>
+            
+            <div class="grid grid-2">
+              <div class="form-group">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input 
+                  type="tel" 
+                  id="telefone" 
+                  name="telefone" 
+                  class="form-input" 
+                  placeholder="(11) 99591-8455"
+                >
+              </div>
+              <div class="form-group">
+                <label for="assunto" class="form-label">Assunto *</label>
+                <select id="assunto" name="assunto" class="form-select" required>
+                  <option value="">Selecione um assunto</option>
+                  <option value="voluntariado">Quero ser voluntário</option>
+                  <option value="estagio">Oportunidade de estágio</option>
+                  <option value="doacoes">Informações sobre doações</option>
+                  <option value="parceria">Proposta de parceria</option>
+                  <option value="imprensa">Imprensa</option>
+                  <option value="outro">Outro assunto</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="mensagem" class="form-label">Mensagem *</label>
+              <textarea 
+                id="mensagem" 
+                name="mensagem" 
+                class="form-textarea" 
+                placeholder="Escreva sua mensagem aqui..."
+                required
+              ></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m22 2-7 20-4-9-9-4Z"/>
+                <path d="M22 2 11 13"/>
+              </svg>
+              Enviar Mensagem
+            </button>
+          </form>
+        </div>
+        
+        <!-- Contact Info -->
+        <div style="flex: 1;">
+          <h2 class="mb-lg">Informações de <span class="text-pink">Contato</span></h2>
+          
+          <div class="info-list">
+            <div class="info-item">
+              <div class="info-item-icon" style="background-color: var(--gota-blue-500);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="info-item-content">
+                <h4>Endereço</h4>
+                <p>Rua Franklin Ribeiro de Almeida, 282 (Jardim Catanduva) - Campo Limpo<br>São Paulo - SP, CEP 05758-110</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-item-icon" style="background-color: var(--gota-pink-700);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div class="info-item-content">
+                <h4>Telefone</h4>
+                <p><a href="tel:+5511995918455" style="color: var(--gota-blue-700);">(11) 99591-8455</a></p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-item-icon" style="background-color: var(--gota-yellow-700);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div class="info-item-content">
+                <h4>E-mail</h4>
+                <p><a href="mailto:contato@gotadeamor.org.br" style="color: var(--gota-blue-700);">sociedadebeneficentegotadeamor@gmail.com
+                </a></p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-item-icon" style="background-color: var(--gota-blue-700);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div class="info-item-content">
+                <h4>Horário de Atendimento</h4>
+                <p>Segunda a Sexta: 9h às 16h<br>Sábado: 9h às 12h</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Social Media -->
+          <div class="mt-xl">
+            <h4 class="mb-md">Siga-nos nas Redes Sociais</h4>
+            <div class="flex gap-md">
+              <a href="https://www.facebook.com/Gota.de.amor.2001/" target="_blank" class="social-icon" style="background-color: var(--gota-blue-100); color: var(--gota-blue-700);" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/gotadeamor.ong?utm_source=qr&igsh=MTFrMWNtNHl1YzJqMg==" target="_blank" class="social-icon" style="background-color: var(--gota-pink-100); color: var(--gota-pink-700);" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                </svg>
+              </a>
+              <a href="https://wa.me/5511995918455" class="social-icon" style="background-color: var(--gota-yellow-100); color: var(--gota-yellow-700);" aria-label="WhatsApp"> <!-- devemos deixar um link direto ao whatsapp?-->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
+                  <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="section bg-blue-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Como Chegar</h2>
+        <p>Visite nossa sede no Campo Limpo, São Paulo.</p>
+      </div>
+      <div style="background-color: var(--gota-blue-200); height: 400px; border-radius: var(--radius-xl); overflow: hidden;">
+          <iframe
+              width="100%"
+              height="100%"
+              style="border:0"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Sociedade+Beneficente+Gota+Amor,+R.+Franklin+Ribeiro+de+Almeida,+282+-+Jardim+Catanduva,+São+Paulo+-+SP,+05758-110&output=embed">
+          </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Gota de Amor</h3>
+          <p>Sociedade Beneficente dedicada a transformar vidas através do amor e da solidariedade.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/Gota.de.amor.2001/" target="_blank" class="social-icon" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/gotadeamor.ong?utm_source=qr&igsh=MTFrMWNtNHl1YzJqMg==" target="_blank" class="social-icon" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Navegação</h4>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Início</a>
+            <a href="sobre.html" class="footer-link">Sobre Nós</a>
+            <a href="acolhimento.html" class="footer-link">Acolhimento</a>
+            <a href="blog.html" class="footer-link">Blog</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Participe</h4>
+          <div class="footer-links">
+            <a href="doacoes.html" class="footer-link">Fazer Doação</a>
+            <a href="acolhimento.html" class="footer-link">Ser Voluntário</a>
+            <a href="contato.html" class="footer-link">Contato</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Contato</h4>
+          <div class="footer-links">
+            <span class="footer-link">Campo Limpo, São Paulo - SP</span>
+            <a href="mailto:sociedadebeneficentegotadeamor@gmail.com" 
+               class="footer-link">sociedadebeneficentegotadeamor@gmail.com
+           </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sociedade Beneficente Gota de Amor. Todos os direitos reservados.</p>
+        <p>CNPJ: 04.721.224/0001-43</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

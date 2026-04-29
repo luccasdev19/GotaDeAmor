@@ -28,7 +28,7 @@ A proposta visa facilitar o contato entre a organização e a comunidade, permit
 
 ## 🏗️ Funcionalidades do Site
 - Página inicial com apresentação da ONG
-- Seção “Sobre Nós”
+- Página “Sobre Nós”
 - Área de projetos e ações sociais
 - Formulário de contato
 - Localização da instituição

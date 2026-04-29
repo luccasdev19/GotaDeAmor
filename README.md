@@ -16,6 +16,8 @@ A proposta visa facilitar o contato entre a organização e a comunidade, permit
 - HTML5
 - CSS3
 - JavaScript
+- TypeScript
+- JSON
 - Git/GitHub
 
 ## 👥 Integrantes do Grupo

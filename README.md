@@ -26,7 +26,7 @@ A proposta visa facilitar o contato entre a organização e a comunidade, permit
 - Vitor Tupinambá
 - Lucas Rodrigues 
 - Talles Eduardo Silva
-- Caio Cesar Pellegrin
+- Caio Cesar Pellegrini
 
 ## 🏗️ Funcionalidades do Site
 - Página inicial com apresentação da ONG

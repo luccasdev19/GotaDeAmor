@@ -22,7 +22,7 @@ A proposta visa facilitar o contato entre a organização e a comunidade, permit
 
 ## 👥 Integrantes do Grupo
 - Richard Duarte
-- Matheus Bernadino
+- Matheus Bernardino
 - Vitor Tupinambá
 - Lucas Rodrigues 
 - Talles Eduardo Silva

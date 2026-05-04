@@ -6,5 +6,7 @@ form.addEventListener('submit', function(event) {
     event.preventDefault(); // Impede o envio do formulário
 });
 
-
+const nomeInput = document.getElementById('nome');
+const emailInput = document.getElementById('email');
+const mensagemInput = document.getElementById('mensagem');
 

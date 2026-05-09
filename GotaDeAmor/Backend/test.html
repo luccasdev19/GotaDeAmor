@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste API Gota de Amor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+    
+    .sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card h2 {
+      color: #333;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 10px;
+    }
+    
+    .card p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    
+    input, textarea, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    
+    button {
+      background: #667eea;
+      color: white;
+      cursor: pointer;
+      border: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    
+    button:hover {
+      background: #764ba2;
+    }
+    
+    .result {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #333;
+      word-wrap: break-word;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    
+    .success {
+      color: green;
+    }
+    
+    .error {
+      color: red;
+    }
+    
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin: 5px 0;
+    }
+    
+    .status.connected {
+      background: #d4edda;
+      color: #155724;
+    }
+    
+    .status.disconnected {
+      background: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🧪 Teste API - Gota de Amor</h1>
+  
+  <div class="card" style="grid-column: 1 / -1;">
+    <h2>Status da API</h2>
+    <div id="statusDiv"></div>
+    <button onclick="testConnection()">Verificar Conexão</button>
+  </div>
+  
+  <div class="sections">
+    <!-- LOGIN -->
+    <div class="card">
+      <h2>🔐 Login Admin</h2>
+      <input type="text" id="loginUser" placeholder="Usuário" value="admin">
+      <input type="password" id="loginPass" placeholder="Senha" value="admin123456">
+      <button onclick="login()">Fazer Login</button>
+      <div id="loginResult" class="result"></div>
+    </div>
+    
+    <!-- CONTATO -->
+    <div class="card">
+      <h2>📧 Enviar Contato</h2>
+      <input type="text" id="contactNome" placeholder="Nome" value="Teste User">
+      <input type="email" id="contactEmail" placeholder="Email" value="teste@email.com">
+      <input type="tel" id="contactTel" placeholder="Telefone" value="11987654321">
+      <select id="contactAssunto">
+        <option value="voluntariado">Voluntariado</option>
+        <option value="estagio">Estágio</option>
+        <option value="doacoes">Doações</option>
+      </select>
+      <textarea id="contactMsg" placeholder="Mensagem" rows="3">Teste de mensagem com mais de 10 caracteres aqui</textarea>
+      <button onclick="enviarContato()">Enviar Contato</button>
+      <div id="contactResult" class="result"></div>
+    </div>
+    
+    <!-- DOAÇÃO -->
+    <div class="card">
+      <h2>💳 Fazer Doação</h2>
+      <input type="number" id="donationValor" placeholder="Valor (R$)" value="50" min="1">
+      <input type="text" id="donationNome" placeholder="Seu Nome (opcional)" value="Doador Teste">
+      <input type="email" id="donationEmail" placeholder="Seu Email (para recibo)" value="doador@email.com">
+      <button onclick="enviarDoacao()">Fazer Doação</button>
+      <div id="donationResult" class="result"></div>
+    </div>
+    
+    <!-- VOLUNTÁRIO -->
+    <div class="card">
+      <h2>🤝 Registrar Voluntário</h2>
+      <input type="text" id="volNome" placeholder="Nome" value="Voluntário Teste">
+      <input type="email" id="volEmail" placeholder="Email" value="voluntario@email.com">
+      <input type="tel" id="volTel" placeholder="Telefone" value="11988888888">
+      <select id="volArea">
+        <option value="eventos">Eventos</option>
+        <option value="educacao">Educação</option>
+        <option value="saude">Saúde</option>
+      </select>
+      <select id="volDisp">
+        <option value="fim_de_semana">Fim de Semana</option>
+        <option value="entre_semana">Entre Semana</option>
+      </select>
+      <button onclick="registrarVoluntario()">Registrar</button>
+      <div id="volResult" class="result"></div>
+    </div>
+    
+    <!-- ESTATÍSTICAS -->
+    <div class="card">
+      <h2>📊 Estatísticas Doações</h2>
+      <button onclick="obterEstatisticas()">Carregar Estatísticas</button>
+      <div id="statsResult" class="result"></div>
+    </div>
+    
+    <!-- POSTS -->
+    <div class="card">
+      <h2>📝 Listar Posts</h2>
+      <button onclick="listarPosts()">Carregar Posts</button>
+      <div id="postsResult" class="result"></div>
+    </div>
+    
+    <!-- ADMIN - LISTAR CONTATOS -->
+    <div class="card">
+      <h2>👨‍💼 Admin - Contatos</h2>
+      <p>Precisa estar logado (fazer login acima)</p>
+      <button onclick="listarContatos()">Listar Contatos</button>
+      <div id="contatosResult" class="result"></div>
+    </div>
+    
+    <!-- ADMIN - LISTAR DOAÇÕES -->
+    <div class="card">
+      <h2>👨‍💼 Admin - Doações</h2>
+      <p>Precisa estar logado (fazer login acima)</p>
+      <button onclick="listarDoações()">Listar Doações</button>
+      <div id="doacoesResult" class="result"></div>
+    </div>
+    
+    <!-- ADMIN - LISTAR VOLUNTÁRIOS -->
+    <div class="card">
+      <h2>👨‍💼 Admin - Voluntários</h2>
+      <p>Precisa estar logado (fazer login acima)</p>
+      <button onclick="listarVoluntarios()">Listar Voluntários</button>
+      <div id="voluntariosResult" class="result"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_URL = 'http://localhost:5000';
+let token = null;
+
+// Exibir resultado
+function showResult(elementId, data, isError = false) {
+  const element = document.getElementById(elementId);
+  const json = JSON.stringify(data, null, 2);
+  element.innerHTML = `<pre class="${isError ? 'error' : 'success'}">${json}</pre>`;
+}
+
+// Verificar conexão
+async function testConnection() {
+  try {
+    const response = await fetch(`${API_URL}/api/health`);
+    const data = await response.json();
+    const status = document.getElementById('statusDiv');
+    status.innerHTML = `<div class="status connected">✅ Conectado ao Backend (${API_URL})</div>`;
+  } catch (error) {
+    const status = document.getElementById('statusDiv');
+    status.innerHTML = `<div class="status disconnected">❌ Desconectado - Backend não está rodando</div>`;
+  }
+}
+
+// Login
+async function login() {
+  const usuario = document.getElementById('loginUser').value;
+  const senha = document.getElementById('loginPass').value;
+  
+  try {
+    const response = await fetch(`${API_URL}/api/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ usuario, senha })
+    });
+    const data = await response.json();
+    
+    if (data.success) {
+      token = data.token;
+      showResult('loginResult', { ...data, token: 'SALVO ✅' });
+    } else {
+      showResult('loginResult', data, true);
+    }
+  } catch (error) {
+    showResult('loginResult', { error: error.message }, true);
+  }
+}
+
+// Contato
+async function enviarContato() {
+  try {
+    const response = await fetch(`${API_URL}/api/contact`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome: document.getElementById('contactNome').value,
+        email: document.getElementById('contactEmail').value,
+        telefone: document.getElementById('contactTel').value,
+        assunto: document.getElementById('contactAssunto').value,
+        mensagem: document.getElementById('contactMsg').value
+      })
+    });
+    const data = await response.json();
+    showResult('contactResult', data);
+  } catch (error) {
+    showResult('contactResult', { error: error.message }, true);
+  }
+}
+
+// Doação
+async function enviarDoacao() {
+  try {
+    const response = await fetch(`${API_URL}/api/donation`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        valor: parseFloat(document.getElementById('donationValor').value),
+        nomeDoador: document.getElementById('donationNome').value,
+        emailDoador: document.getElementById('donationEmail').value
+      })
+    });
+    const data = await response.json();
+    showResult('donationResult', data);
+  } catch (error) {
+    showResult('donationResult', { error: error.message }, true);
+  }
+}
+
+// Voluntário
+async function registrarVoluntario() {
+  try {
+    const response = await fetch(`${API_URL}/api/volunteer`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome: document.getElementById('volNome').value,
+        email: document.getElementById('volEmail').value,
+        telefone: document.getElementById('volTel').value,
+        areaInteresse: document.getElementById('volArea').value,
+        disponibilidade: document.getElementById('volDisp').value
+      })
+    });
+    const data = await response.json();
+    showResult('volResult', data);
+  } catch (error) {
+    showResult('volResult', { error: error.message }, true);
+  }
+}
+
+// Estatísticas
+async function obterEstatisticas() {
+  try {
+    const response = await fetch(`${API_URL}/api/donations/stats`);
+    const data = await response.json();
+    showResult('statsResult', data);
+  } catch (error) {
+    showResult('statsResult', { error: error.message }, true);
+  }
+}
+
+// Posts
+async function listarPosts() {
+  try {
+    const response = await fetch(`${API_URL}/api/posts?pagina=1&limite=5`);
+    const data = await response.json();
+    showResult('postsResult', data);
+  } catch (error) {
+    showResult('postsResult', { error: error.message }, true);
+  }
+}
+
+// Admin - Contatos
+async function listarContatos() {
+  if (!token) {
+    showResult('contatosResult', { error: 'Você precisa fazer login primeiro' }, true);
+    return;
+  }
+  
+  try {
+    const response = await fetch(`${API_URL}/api/contacts`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const data = await response.json();
+    showResult('contatosResult', data);
+  } catch (error) {
+    showResult('contatosResult', { error: error.message }, true);
+  }
+}
+
+// Admin - Doações
+async function listarDoações() {
+  if (!token) {
+    showResult('doacoesResult', { error: 'Você precisa fazer login primeiro' }, true);
+    return;
+  }
+  
+  try {
+    const response = await fetch(`${API_URL}/api/donations`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const data = await response.json();
+    showResult('doacoesResult', data);
+  } catch (error) {
+    showResult('doacoesResult', { error: error.message }, true);
+  }
+}
+
+// Admin - Voluntários
+async function listarVoluntarios() {
+  if (!token) {
+    showResult('voluntariosResult', { error: 'Você precisa fazer login primeiro' }, true);
+    return;
+  }
+  
+  try {
+    const response = await fetch(`${API_URL}/api/volunteers`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const data = await response.json();
+    showResult('voluntariosResult', data);
+  } catch (error) {
+    showResult('voluntariosResult', { error: error.message }, true);
+  }
+}
+
+// Testar conexão ao carregar
+window.addEventListener('load', testConnection);
+</script>
+
+</body>
+</html>

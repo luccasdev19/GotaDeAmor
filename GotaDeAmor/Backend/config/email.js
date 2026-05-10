@@ -19,10 +19,10 @@ const sendEmail = async (to, subject, text, html = null) => {
       text,
       html: html || text,
     });
-    console.log(`✓ Email enviado para: ${to}`);
+    console.log(` Email enviado para: ${to}`);
     return true;
   } catch (error) {
-    console.error(`✗ Erro ao enviar email: ${error.message}`);
+    console.error(` Erro ao enviar email: ${error.message}`);
     return false;
   }
 };

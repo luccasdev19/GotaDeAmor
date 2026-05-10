@@ -1,5 +1,4 @@
 const Post = require('../models/Post');
-
 // POST - Criar novo post (ADMIN)
 exports.createPost = async (req, res) => {
   try {

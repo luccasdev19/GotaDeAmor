@@ -64,30 +64,30 @@ app.use((req, res) => {
 // Iniciar servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`\n🚀 Servidor Backend rodando em http://localhost:${PORT}`);
-  console.log(`📡 Ambiente: ${process.env.NODE_ENV}`);
-  console.log(`\n✅ ENDPOINTS DISPONÍVEIS:\n`);
+  console.log(`\n Servidor Backend rodando em http://localhost:${PORT}`);
+  console.log(` Ambiente: ${process.env.NODE_ENV}`);
+  console.log(`\n ENDPOINTS DISPONÍVEIS:\n`);
   
-  console.log('📧 CONTATO (Público):');
+  console.log(' CONTATO (Público):');
   console.log(`  POST   /api/contact`);
   console.log(`  GET    /api/contacts (ADMIN)`);
   console.log(`  GET    /api/contacts/:id (ADMIN)`);
   console.log(`  DELETE /api/contacts/:id (ADMIN)\n`);
   
-  console.log('💳 DOAÇÕES (Público):');
+  console.log(' DOAÇÕES (Público):');
   console.log(`  POST   /api/donation`);
   console.log(`  GET    /api/donations/stats`);
   console.log(`  GET    /api/donations (ADMIN)`);
   console.log(`  DELETE /api/donations/:id (ADMIN)\n`);
   
-  console.log('🤝 VOLUNTÁRIOS (Público):');
+  console.log(' VOLUNTÁRIOS (Público):');
   console.log(`  POST   /api/volunteer`);
   console.log(`  GET    /api/volunteers (ADMIN)`);
   console.log(`  GET    /api/volunteers/:id (ADMIN)`);
   console.log(`  PUT    /api/volunteers/:id (ADMIN)`);
   console.log(`  DELETE /api/volunteers/:id (ADMIN)\n`);
   
-  console.log('📝 BLOG (Público):');
+  console.log(' BLOG (Público):');
   console.log(`  GET    /api/posts`);
   console.log(`  GET    /api/posts/:id`);
   console.log(`  POST   /api/posts (ADMIN)`);
@@ -95,19 +95,25 @@ app.listen(PORT, () => {
   console.log(`  PUT    /api/posts/:id (ADMIN)`);
   console.log(`  DELETE /api/posts/:id (ADMIN)\n`);
   
-  console.log('⚙️  CONFIGURAÇÕES (Público):');
+  console.log('  CONFIGURAÇÕES (Público):');
   console.log(`  GET    /api/config`);
   console.log(`  GET    /api/config/:nome`);
   console.log(`  PUT    /api/config (ADMIN)`);
   console.log(`  PUT    /api/configs (ADMIN)`);
   console.log(`  DELETE /api/config/:nome (ADMIN)\n`);
   
-  console.log('🔐 AUTENTICAÇÃO:');
+  console.log(' AUTENTICAÇÃO:');
   console.log(`  POST   /api/auth/login\n`);
   
-  console.log('⏰ HEALTH CHECK:');
+  console.log(' HEALTH CHECK:');
   console.log(`  GET    /api/health`);
   console.log(`  GET    /api/config\n`);
 });
 
+process.on('unhandledRejection', (err) => {
+  console.error('Erro não tratado:', err);
+  process.exit(1); 
+});
+
 module.exports = app;
+

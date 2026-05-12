@@ -157,3 +157,35 @@ exports.deleteContact = async (req, res) => {
     });
   }
 };
+
+// PUT - Atualizar contato (ADMIN)
+exports.updateContact = async (req, res) => {
+  try {
+    const { lido, respondido, respostaData } = req.body;
+
+    const contact = await Contact.findByIdAndUpdate(
+      req.params.id,
+      { lido, respondido, respostaData },
+      { new: true, runValidators: true }
+    );
+
+    if (!contact) {
+      return res.status(404).json({
+        success: false,
+        message: 'Contato não encontrado',
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Contato atualizado com sucesso',
+      contact,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Erro ao atualizar contato',
+      error: error.message,
+    });
+  }
+};

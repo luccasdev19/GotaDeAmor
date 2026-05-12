@@ -1,12 +1,13 @@
 const express = require('express');
 const { getAllConfigs, getConfig, updateConfig, updateConfigs, deleteConfig } = require('../controllers/configController');
 const authAdmin = require('../middleware/authAdmin');
+const { publicLimiter } = require('../middleware/rateLimiter');
 
 const router = express.Router();
 
 // Rotas públicas
-router.get('/config', getAllConfigs); // GET /api/config
-router.get('/config/:nome', getConfig); // GET /api/config/:nome
+router.get('/config', publicLimiter, getAllConfigs); // GET /api/config
+router.get('/config/:nome', publicLimiter, getConfig); // GET /api/config/:nome
 
 // Rotas admin (protegidas)
 router.put('/config', authAdmin, updateConfig); // PUT /api/admin/config

@@ -191,3 +191,107 @@ exports.deletePost = async (req, res) => {
     });
   }
 };
+
+// GET - Buscar posts por termo (PÚBLICO)
+exports.searchPosts = async (req, res) => {
+  try {
+    const { q, pagina = 1, limite = 10 } = req.query;
+
+    if (!q || q.trim().length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'Parâmetro de busca "q" é obrigatório',
+      });
+    }
+
+    const skip = (pagina - 1) * limite;
+    const searchRegex = new RegExp(q, 'i'); // Busca case-insensitive
+
+    const posts = await Post.find({
+      status: 'publicado',
+      $or: [
+        { titulo: searchRegex },
+        { conteudo: searchRegex },
+        { resumo: searchRegex },
+        { tags: searchRegex },
+      ],
+    })
+      .sort({ dataPublicacao: -1 })
+      .skip(skip)
+      .limit(parseInt(limite));
+
+    const total = await Post.countDocuments({
+      status: 'publicado',
+      $or: [
+        { titulo: searchRegex },
+        { conteudo: searchRegex },
+        { resumo: searchRegex },
+        { tags: searchRegex },
+      ],
+    });
+
+    res.status(200).json({
+      success: true,
+      count: posts.length,
+      total,
+      pagina: parseInt(pagina),
+      totalPaginas: Math.ceil(total / limite),
+      termo: q,
+      posts,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Erro ao buscar posts',
+      error: error.message,
+    });
+  }
+};
+
+// GET - Obter posts por categoria (PÚBLICO)
+exports.getPostsByCategory = async (req, res) => {
+  try {
+    const { categoria } = req.params;
+    const { pagina = 1, limite = 10 } = req.query;
+
+    // Validar categoria
+    const categoriasValidas = ['noticia', 'evento', 'dica', 'historia', 'outro'];
+    if (!categoriasValidas.includes(categoria)) {
+      return res.status(400).json({
+        success: false,
+        message: `Categoria inválida. Válidas: ${categoriasValidas.join(', ')}`,
+      });
+    }
+
+    const skip = (pagina - 1) * limite;
+
+    const posts = await Post.find({
+      status: 'publicado',
+      categoria,
+    })
+      .sort({ dataPublicacao: -1 })
+      .skip(skip)
+      .limit(parseInt(limite));
+
+    const total = await Post.countDocuments({
+      status: 'publicado',
+      categoria,
+    });
+
+    res.status(200).json({
+      success: true,
+      count: posts.length,
+      total,
+      pagina: parseInt(pagina),
+      totalPaginas: Math.ceil(total / limite),
+      categoria,
+      posts,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Erro ao buscar posts',
+      error: error.message,
+    });
+  }
+};

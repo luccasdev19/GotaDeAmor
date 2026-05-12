@@ -98,12 +98,12 @@ app.use((req, res) => {
 // Iniciar servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`\n✅ Servidor Backend rodando em http://localhost:${PORT}`);
-  console.log(`📍 Ambiente: ${process.env.NODE_ENV}`);
-  console.log(`⚙️  Rate Limiting: ATIVADO\n`);
+  console.log(`\n Servidor Backend rodando em http://localhost:${PORT}`);
+  console.log(` Ambiente: ${process.env.NODE_ENV}`);
+  console.log(`  Rate Limiting: ATIVADO\n`);
   
   console.log('═══════════════════════════════════════════════════════════\n');
-  console.log('📋 ENDPOINTS DISPONÍVEIS:\n');
+  console.log(' ENDPOINTS DISPONÍVEIS:\n');
   
   console.log('🔹 CONTATO (Público):');
   console.log(`   POST   /api/contact`);
@@ -150,7 +150,7 @@ app.listen(PORT, () => {
   console.log(`   GET    /api/config\n`);
   
   console.log('═══════════════════════════════════════════════════════════');
-  console.log('🔐 Middleware de Segurança:');
+  console.log(' Middleware de Segurança:');
   console.log('   ✓ CORS habilitado');
   console.log('   ✓ Rate Limiting global (100 req/15min)');
   console.log('   ✓ Validação ObjectId MongoDB');

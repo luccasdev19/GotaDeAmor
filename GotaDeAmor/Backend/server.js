@@ -109,7 +109,7 @@ app.listen(PORT, () => {
   console.log(`   POST   /api/contact`);
   console.log(`   GET    /api/contacts (ADMIN)`);
   console.log(`   GET    /api/contacts/:id (ADMIN)`);
-  console.log(`   PUT    /api/contacts/:id (ADMIN)  ✨ NOVO`);
+  console.log(`   PUT    /api/contacts/:id (ADMIN)   NOVO`);
   console.log(`   DELETE /api/contacts/:id (ADMIN)\n`);
   
   console.log('🔹 DOAÇÕES (Público):');
@@ -128,8 +128,8 @@ app.listen(PORT, () => {
   console.log('🔹 BLOG (Público):');
   console.log(`   GET    /api/posts`);
   console.log(`   GET    /api/posts/:id`);
-  console.log(`   GET    /api/posts/search?q=termo  ✨ NOVO`);
-  console.log(`   GET    /api/posts/categoria/:categoria  ✨ NOVO`);
+  console.log(`   GET    /api/posts/search?q=termo   NOVO`);
+  console.log(`   GET    /api/posts/categoria/:categoria   NOVO`);
   console.log(`   POST   /api/posts (ADMIN)`);
   console.log(`   GET    /api/admin/posts (ADMIN)`);
   console.log(`   PUT    /api/posts/:id (ADMIN)`);

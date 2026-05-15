@@ -27,10 +27,18 @@ exports.login = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRE || '7d' }
     );
 
+    // ====== SEGURANÇA: Enviar JWT em httpOnly Cookie ======
+    const isProduction = process.env.NODE_ENV === 'production';
+    res.setHeader('Set-Cookie', 
+      `admin_token=${token}; HttpOnly; Path=/; Max-Age=604800${
+        isProduction ? '; Secure; SameSite=Strict' : '; SameSite=Lax'
+      }`
+    );
+
     res.status(200).json({
       success: true,
       message: 'Login realizado com sucesso',
-      token,
+      // NÃO retornar token no JSON (está no cookie)
     });
   } catch (error) {
     console.error(error);
@@ -40,4 +48,13 @@ exports.login = async (req, res) => {
       error: error.message,
     });
   }
+};
+
+// POST - Logout (limpar cookie)
+exports.logout = (req, res) => {
+  res.setHeader('Set-Cookie', 'admin_token=; HttpOnly; Path=/; Max-Age=0');
+  res.status(200).json({
+    success: true,
+    message: 'Logout realizado com sucesso',
+  });
 };

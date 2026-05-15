@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const connectDB = require('./config/database');
 const { publicLimiter } = require('./middleware/rateLimiter');
@@ -9,8 +10,30 @@ const app = express();
 // Conectar ao MongoDB
 connectDB();
 
+// ====== CONFIGURAÇÃO CORS SEGURA ======
+const allowedOrigins = [
+  'http://localhost:3000', // Desenvolvimento
+  // 'https://gotadeamor.com', // Adicionar em produção
+  // 'https://www.gotadeamor.com', // Adicionar em produção
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS não permitido'));
+    }
+  },
+  credentials: true, // Permite envio de cookies
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200,
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
+app.use(cookieParser()); // Parse cookies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -20,15 +43,6 @@ app.use(publicLimiter);
 // Rotas de Health Check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
-});
-
-// Rotas de teste
-app.get('/api/config', (req, res) => {
-  res.json({
-    message: 'Backend Gota de Amor funcionando!',
-    environment: process.env.NODE_ENV,
-    port: process.env.PORT,
-  });
 });
 
 // ====== IMPORTAR ROTAS ======
@@ -128,8 +142,8 @@ app.listen(PORT, () => {
   console.log('🔹 BLOG (Público):');
   console.log(`   GET    /api/posts`);
   console.log(`   GET    /api/posts/:id`);
-  console.log(`   GET    /api/posts/search?q=termo   NOVO`);
-  console.log(`   GET    /api/posts/categoria/:categoria   NOVO`);
+  console.log(`   GET    /api/posts/search?q=termo`);
+  console.log(`   GET    /api/posts/categoria/:categoria`);
   console.log(`   POST   /api/posts (ADMIN)`);
   console.log(`   GET    /api/admin/posts (ADMIN)`);
   console.log(`   PUT    /api/posts/:id (ADMIN)`);
@@ -143,15 +157,16 @@ app.listen(PORT, () => {
   console.log(`   DELETE /api/config/:nome (ADMIN)\n`);
   
   console.log('🔹 AUTENTICAÇÃO:');
-  console.log(`   POST   /api/auth/login\n`);
+  console.log(`   POST   /api/auth/login`);
+  console.log(`   POST   /api/auth/logout\n`);
   
   console.log('🔹 HEALTH CHECK:');
-  console.log(`   GET    /api/health`);
-  console.log(`   GET    /api/config\n`);
+  console.log(`   GET    /api/health\n`);
   
   console.log('═══════════════════════════════════════════════════════════');
   console.log(' Middleware de Segurança:');
-  console.log('   ✓ CORS habilitado');
+  console.log('   ✓ CORS restringido para domínios específicos');
+  console.log('   ✓ JWT em httpOnly cookies (seguro contra XSS)');
   console.log('   ✓ Rate Limiting global (100 req/15min)');
   console.log('   ✓ Validação ObjectId MongoDB');
   console.log('   ✓ Proteção contra brute force no login');

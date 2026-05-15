@@ -1,10 +1,4 @@
-/* ========================================
-   GOTA DE AMOR - JavaScript Principal
-   Versão: HTML/CSS/JS Puro
-   ======================================== */
-
 document.addEventListener('DOMContentLoaded', function() {
-  // Inicializar componentes
   initMobileMenu();
   initSmoothScroll();
   initContactForm();
@@ -14,13 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initAnimations();
 });
 
-/* ========================================
-   UTILITÁRIOS
-   ======================================== */
-
-/**
- * Mostrar toast notification
- */
+/*Mostrar toast notification */
 function showToast(message, type = 'info', duration = 3000) {
   const toast = document.createElement('div');
   toast.className = `toast toast-${type}`;
@@ -37,7 +25,7 @@ function showToast(message, type = 'info', duration = 3000) {
     z-index: 9999;
     animation: slideIn 0.3s ease-out;
   `;
-  
+
   document.body.appendChild(toast);
   
   setTimeout(() => {
@@ -52,7 +40,7 @@ function showToast(message, type = 'info', duration = 3000) {
 function setButtonLoading(button, isLoading) {
   if (isLoading) {
     button.disabled = true;
-    button.innerHTML = `<span>⏳ Enviando...</span>`;
+    button.innerHTML = `<span> Enviando...</span>`;
     button.style.opacity = '0.6';
   } else {
     button.disabled = false;
@@ -61,10 +49,7 @@ function setButtonLoading(button, isLoading) {
   }
 }
 
-/* ========================================
-   MENU MOBILE
-   ======================================== */
-
+/* MENU MOBILE */
 function initMobileMenu() {
   const menuToggle = document.querySelector('.menu-toggle');
   const navMobile = document.querySelector('.nav-mobile');
@@ -98,9 +83,7 @@ function initMobileMenu() {
   });
 }
 
-/* ========================================
-   SMOOTH SCROLL
-   ======================================== */
+/* SMOOTH SCROLL */
 
 function initSmoothScroll() {
   const links = document.querySelectorAll('a[href^="#"]');
@@ -125,9 +108,7 @@ function initSmoothScroll() {
   });
 }
 
-/* ========================================
-   FORMULÁRIO DE CONTATO
-   ======================================== */
+/* FORMULÁRIO DE CONTATO */
 
 function initContactForm() {
   const form = document.getElementById('contact-form');
@@ -226,9 +207,7 @@ function initContactForm() {
   }
 }
 
-/* ========================================
-   FORMULÁRIO DE DOAÇÃO
-   ======================================== */
+/* FORMULÁRIO DE DOAÇÃO */
 
 function initDonationForm() {
   const form = document.getElementById('donation-form');
@@ -308,9 +287,7 @@ function initDonationForm() {
   }
 }
 
-/* ========================================
-   FORMULÁRIO DE VOLUNTARIADO
-   ======================================== */
+/*FORMULÁRIO DE VOLUNTARIADO */
 
 function initVolunteerForm() {
   const form = document.getElementById('volunteer-form');

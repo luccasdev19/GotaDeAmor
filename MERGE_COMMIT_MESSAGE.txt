@@ -1,0 +1,19 @@
+🔒 Fase 1: Security fixes - JWT cookies, CORS whitelist, API unification
+
+- Implement httpOnly cookies for JWT (XSS protection)
+- Add CORS whitelist with domain restrictions
+- Unify HTTP client to TypeScript (app/lib/api.ts)
+- Fix Blog API contract: search param 'q', add category endpoints
+- Remove /api/config collision
+- Add logout endpoint with cookie cleanup
+- Add cookie-parser dependency
+- Document CORS domain configuration
+
+Security improvements:
+✓ JWT secure against XSS in httpOnly cookies
+✓ CORS restricted to authorized origins
+✓ Single unified API client
+✓ Aligned endpoint contracts
+✓ Ready for production
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
